@@ -18,12 +18,18 @@
 >
 > The source code is private. This document describes the product, architecture, engineering decisions and quality practices behind it.
 
+<div align="center">
+  <img src="docs/screenshots/dashboard.png" alt="DocuAuto dashboard: KPI cards for total vehicles, upcoming services and monthly spend, above the vehicle list">
+  <p><em>Fleet dashboard. All screenshots use demo data.</em></p>
+</div>
+
 ---
 
 ## Table of Contents
 
 - [Product Overview](#product-overview)
 - [Key Features](#key-features)
+- [Product Tour](#product-tour)
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
 - [Data Model](#data-model)
@@ -100,6 +106,93 @@ Subscriptions are recurring payments processed through **MercadoPago**.
 - Built-in blog engine (Markdown editor, scheduling, SEO fields, dynamic sitemap)
 - Transactional emails built with React Email (11 templates)
 - Dark mode and fully responsive UI
+
+---
+
+## Product Tour
+
+Every screen below is the real application running on demo data.
+
+### Maintenance center
+
+![Maintenance center with cards for overdue and upcoming services, each showing the vehicle, plate, due date and mileage](docs/screenshots/mantenimientos.png)
+
+Pending work across the whole fleet, ranked by urgency. Each card states why the item is due: days overdue for time-based rules, kilometers overdue for mileage-based ones.
+
+### Service projections
+
+![Service projection panel listing oil change, tyre rotation, general inspection and brake pads with the kilometers or date at which each one falls due](docs/screenshots/proximos-service.png)
+
+The maintenance engine computes both constraints of every rule (kilometers and time) from the latest real record and reports whichever comes first. Nothing is shown for a service with no history behind it.
+
+### Agenda
+
+![Agenda listing all deadlines for one vehicle with vigente and por vencer status badges](docs/screenshots/agenda.png)
+
+Documents and maintenance merged into a single ordered list of deadlines, filterable by vehicle and by type.
+
+### Vehicle detail
+
+![Vehicle detail page showing plate, mileage, last service and total spend, with actions to add maintenance, export PDF and enable the public history](docs/screenshots/vista-vehiculo.png)
+
+Per-vehicle summary, PDF export and the toggle that publishes the shareable maintenance report.
+
+### Reports
+
+![Reports page with a stacked bar chart of maintenance and operating spend over time, a category breakdown and a vehicles-requiring-attention panel](docs/screenshots/reportes-2.png)
+
+Spend over time split by maintenance and operating costs, category breakdown, cost per kilometer and the vehicles concentrating the fleet's spend, all over a configurable period.
+
+### Public vehicle report
+
+![Public maintenance report for a vehicle: plate, service count, mileage and a timeline of past services, with a PDF export button](docs/screenshots/historial-publico.png)
+
+The report an owner shares with a buyer: service timeline and mileage, served from a public route with no access to the rest of the account.
+
+<details>
+<summary><strong>More screens</strong></summary>
+
+#### Adding a service
+
+![Add maintenance dialog with fields for category, service type, date, odometer, cost, workshop and notes](docs/screenshots/modal-mantenimiento.png)
+
+#### Service history
+
+![Service history timeline for one vehicle, filterable by all, repairs or routine, with cost and workshop per entry](docs/screenshots/historial-vehiculo.png)
+
+#### Document vault
+
+![Documents page grouping stored files per vehicle, each with its expiration date](docs/screenshots/documentos.png)
+
+#### Expenses
+
+![Fleet expenses table with date, vehicle, category, notes and amount, plus PDF and Excel export](docs/screenshots/gastos.png)
+
+#### Report KPIs
+
+![Report KPI cards: total spend, average monthly cost, next month projection, maintenance events, average cost per vehicle and active vehicles](docs/screenshots/reportes.png)
+
+#### Top vehicles by maintenance spend
+
+![Table ranking the top five vehicles by maintenance spend with events, total, average per event and share of the fleet](docs/screenshots/reportes-3.png)
+
+#### Cost per kilometer
+
+![Table of cost per kilometer per vehicle, with insufficient-data rows marked explicitly](docs/screenshots/reportes-4.png)
+
+#### Account settings
+
+![Account settings page with tabs for profile, security, plan and billing, notifications and preferences](docs/screenshots/configuracion-cuenta.png)
+
+#### Marketing site
+
+![DocuAuto landing page with the headline about maintenance and fleet management and a product preview card](docs/screenshots/home.png)
+
+#### Blog
+
+![Blog index with article cards about vehicle transfer paperwork, buying a used car and company fleet management](docs/screenshots/blog.png)
+
+</details>
 
 ---
 
